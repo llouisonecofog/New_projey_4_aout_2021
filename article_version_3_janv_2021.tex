@@ -1,0 +1,456 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%     
+%%%%% 
+%%%%%                                          *** A R T I C L E ****
+%%%%%
+%%%%%                    Analysis and optimal control for NTB system 
+%%%%%                                       with pollution (linear case)
+%%%%%
+%%%%%
+%%%%%                     
+%%%%% 
+%%%%%                  **********      VERSION DU 28 OCTOBRE 2017    ********
+%%%%%
+%%%%%
+%%%%%                           
+%%%%%
+%%%%%
+%%%%% 
+%%%%%
+%%%%%
+%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition\rm}
+\newtheorem{remark}{\it Remark\/}
+\newtheorem{example}{\it Example\/}
+
+
+\journal{Journal of \LaTeX\ Templates}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+
+\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% PERSONNAL MACROS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\R{I\!\!R}
+\def\vp{\varepsilon}
+\def\p{\partial}
+\def\dis{\displaystyle}
+
+\def\cqfd{\hfill\rule{2.2mm}{2.2mm}\vspace{1ex}}
+
+\newcommand{\LS}{L^{2}(\Sigma)}
+\newcommand{\LSii}{L^{2}(\Sigma_2)}
+\newcommand{\LSi}{L^{2}(\Sigma_1)}
+\newcommand{\Si}{\Sigma_1}
+\newcommand{\Sii}{\Sigma_2}
+\newcommand{\nt}{\noindent}
+\newcommand{\LQ}{L^{2}(Q)}
+\newcommand{\gLQ}{g\in\LQ}
+\newcommand{\vLS}{v\in\LS}
+\newcommand{\vLQ}{v\in\LQ}
+
+\newcommand{\C}{c^{-}}
+\newcommand{\Ci}{c^{+}}
+\newcommand{\rg}{\rho_\gamma}
+\newcommand{\pg}{p_\gamma}
+\newcommand{\vpi}{\varphi}
+\newcommand{\Omg}{\Omega}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Testing vulnerability of commercial Tree Species to water stress in forests of the Guiana Shield}
+
+%% Group authors per affiliation:
+\author{Loic Louison, Stéphane Traissac, Bruno Hérault}
+%\address{loic.louison@espe-guyane.fr, abdennebi.omrane@univ-guyane.fr, 
+%Universit\'e de Guyane, UR, UM2, IRD, 
+%Campus de Troubiran, 97337, Cayenne (France).}
+
+%\cortext[mycorrespondingauthor]{Corresponding author}
+%\ead{abdennebi.omrane@univ-guyane.fr}
+
+
+\begin{abstract}
+XXXXXXXXXXXXXXX
+\end{abstract}
+
+\begin{keyword}
+XXXXXXXXXXXXXXXXXXXXXXXXX
+%\MSC[2010] 35M32; 35Q92; 49J20; 49K20.
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+%
+%
+%                 SECTION : 1
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Introduction}\label{section_un}
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+%
+%
+%                 SECTION : 2
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Materiels and Methods}\label{section_deux}  
+
+\subsection{Site Characteristics}
+
+%\noindent The study was conducted at the 
+%\newpage
+\subsection{Data} 
+
+\noindent The datasets of Guyafor were used in this study. Guyafor is a network of forest research permanent plots. This network is dedicated to long term studies in forest dynamics and biodiversity. It includes 45 plots distributed on 10 sites mainly in the coastal area of French Guiana. 157 800 trees above 10 cm of diameter at breast height (DBH) are monitored within 235 ha at regular intervals (2 to 4 years). 
+
+%\begin{figure}[!h] 
+%\includegraphics[width=0.68\textwidth]{guyafor-network.jpg}
+%\end{figure}
+
+\newpage
+\subsection{Model}  
+The joint growth-mortality model used is based on 2 sub-models : the mortality model and the Growth model.
+\subsubsection{Mortality model}
+\noindent We use the mortality individual model is a non-linear hump-shaped growth model developed  by \cite{Herault} and used by Fargeon and al \cite{Fargeon}.   At each time step $t$ an individual tree $i$ of species $j$ may die with probability $ p_{i_{j},t}.$
+%\begin{itemize}
+%\item[1)]  Mortality model :
+
+\begin{equation}\label{modele_mortalite}
+\begin{array}{lcl}
+  p_{i_{j},t} & =  & logit^{-1} \Big((\theta_{m_{0}} + \mathcal{P}_{0}) +\theta_{m_{1}} \times 
+ log \left(\frac{AGR_{i_{j},t-1}+1}{\widehat{AGR}_{i_{j},t-1}+1}\right)\\\\
+ && +\theta_{m_{2}}\times \frac{DBH_{i_{j},t}}{DBH_{max_{j}}}+\theta_{m_{3}}\times  \Big(\frac{DBH_{i_{j},t}}{DBH_{max_{j}}}\Big)^2+(\theta_{m_{4}}+\mathcal{P}_{j_{m_{4}}})\times Water_{t} \\\\
+ && + (\theta_{m_{5}}+\mathcal{P}_{j_{m_{5}}}) \times ABGL_{i_{j}} +(\theta_{m_{6}}+\mathcal{P}_{j_{m_{6}}} ) \times Water_{t} \times ABGL_{i_{j}}\Big)
+ \end{array}
+\end{equation}
+\noindent where :
+
+%$\mathcal{P}_{s} \thicksim \mathcal{N}(0,\theta_{m_{7}})$ 
+$\mathcal{P}_{0} \thicksim \mathcal{N}(0,\sigma_{0});$ 
+
+$\mathcal{P}_{j_{m_{k}}} \thicksim \mathcal{N}(0,\sigma_{k})$  
+for $k = 4,5,6;$
+
+%\noindent We consider : 
+ $\mathcal{P}_{0}$ is the random effect related to the parameter $\theta_{m_{0}}.$
+%\noindent La variable $\mathcal{P}_{0}$ est un effet aléatoire mis sur le paramètre $\theta_{m_{0}}.$
+
+ $\mathcal{P}_{j_{m_{k}}}$ is th random effect related to the commercial species $j$ of mortality model for $k = 4,5,6.$ 
+
+%\noindent La variable $\mathcal{P}_{j_{m_{k}}}$ est un effet aléatoire mis sur la $j^{\text{ème}}$ espèce commerciale dans le modèle de mortalité où $k = 4,5,6.$  
+
+%\noindent Le terme $\displaystyle\theta_{m_{1}} \times 
+% log \left(\frac{AGR_{i_{j},t-1}+1}{\widehat{AGR}_{i_{j},t-1}+1}\right)$ correspond à la vigueur.
+
+
+ 
+% correspond à la vigueur.
+ 
+%\item La variable $\mathcal{P}_{i}$ est un effet aléatoire mis sur le $i^{\text{ème}}$ un individu de l'espèce commerciale 
+%dans le modèle de mortalité.
+
+%\end{enumerate}
+
+\subsubsection{Growth model}
+
+The growth individual-based model is nonlinear model developed by
+
+ %\item[2)] Modèle de croissance :
+ \begin{equation}\label{modele_croissance}
+ \begin{array}{lcl}
+ log (\widehat{AGR}_{i_{j},t-1}+1) & = & \Big((\theta_{c_{0}}+\mathcal{G}_{1})+\theta_{c_{1}}\times DBH_{max_{j}}+((\theta_{c_{2}}+\mathcal{G}{j_{c_{2}}} )\times Water_{t}\\\\
+ && + (\theta_{c_{3}}+\mathcal{G}{j_{c_{3}}} ) \times ABGL_{i_{j}} +(\theta_{c_{4}}+\mathcal{G}{j_{c_{4}}})\times Water_{t} \times ABGL_{i_{j}}\Big)\\\\
+ &&\times \displaystyle e^{\left(-\frac{1}{2}\left[log\left(\frac{DBH_{i_{j},t-2}}{\theta_{c_{5}}\times DBH_{max_{j,s}}}\right)/(\theta_{c_{6}}\times WD_{j})\right]^{2}\right)}
+ \end{array} 
+ \end{equation}
+où 
+ $$
+  log (AGR_{i,t-1}+1) = log \Big(\widehat{AGR}_{i,t-1}+1\Big) +\varepsilon_{i_{{j}_{s}}}
+ $$  
+ 
+\noindent where : % $\varepsilon_{i} \thicksim \mathcal{N}(0,\theta_{c_{8}}),\,\, \mathcal{G}_{s} \thicksim \mathcal{N}(0,\theta_{c_{9}})$ 
+
+ $\mathcal{G}_{c_{1}} \thicksim \mathcal{N}(0,\sigma_{c_{1}});$ 
+ 
+ $\mathcal{G}_{j_{c_{k}}} \thicksim \mathcal{N}(0,\sigma_{k})$ for $k = 2,3,4.$
+
+%\begin{enumerate}
+%\noindent  $Water_{t}$ correspond au stress subit par l'arbre au temps $t;$ %Cette variable est calculée à partir de $REW$ et où
+%son échelle de calcul spatiale est le site avec une variabilité temporelle (indice annuel moyen calculé entre deux dates d'inventaires).
+
+%\noindent Traduction en anglais reverso à retravailler: 
+
+\noindent $Water_{t}$ is a covariate related to the water stress undergone tree at time $t.$ Its spatial calculation scale is the site with temporal variability (average annual index calculated between two inventory dates).
+ 
+%\item 
+%\noindent La variable $ABGL_{i_{j}}$ correspond à la perte de biomasse de la parcelle (échelle de calcul) contenant l'individu $i$  de la $j^{\text{ème}}$ espèce commerciale, due à l'exploitation forestière. Elle comprend les arbres retirés de la forêt et les arbres décédés pendant et juste après l'exploitation. Cette variable n'a pas de variabilité temporelle.
+% (calculation scale) containing the individual tree $i$ of the $j$ commercial species,
+
+%\noindent Traduction en anglais reverso à retravailler:  
+
+\noindent  $ABGL_{i_{j}}$ is a covariate related to the loss of biomass from the forest plot due to logging for each individual tree $i$ from each commercial species $j$ at stand level. 
+
+
+It includes trees removed from the forest plot and from trees died during and immediately after the harvesting. %This variable has no temporal variability.
+
+%La perte de biomasse est donc calculée à un échelle infra-site.
+
+ %Du coup je pense qu'il faut rajouter, pour chaque variable "l'échelle" de calcul
+%Water : échelle spatiale du site, variabilité temporelle (calcul entre deux inventaires, indice ramené à une année)
+%ABGL : échelle spatiale de la parcelle, pas de variabilité temporelle
+%Dmax : spécifique, échelle spatiale le site, pas de variabilité temporelle.
+%WD : spécifique, pas de variabilité spatiale ou temporelle
+
+
+%l'individu $i$  de la $j^{\text{ème}}$ espèce commerciale. Elle est nulle lorsque l'on se trouve sur une parcelle non exploitée.
+
+%\item 
+\noindent La variable $\mathcal{G}_{c_{1}}$ est un effet aléatoire mis sur le paramètre $\theta_{c_{0}}.$
+
+%\item 
+\noindent La variable $\mathcal{G}{j_{c_{k}}}$ est un effet aléatoire mis sur la $j_{c_{k}}^{\text{ème}}$ espèce commerciale dans le modèle de croissance où $k$ va de $1$ à $4.$
+
+%\item La variable $\mathcal{G}_{i}$ est un effet aléatoire mis sur le $i^{\text{ème}}$ individu de l'espèce commerciale dans le modèle de croissance.
+
+%\item 
+\noindent La variable $WD_{j}$ est la densité du densité du bois de l'espèce où son échelle de calcul est spécifique. Elle n'a pas de variabilité spatiale ou temporelle.
+
+\noindent La variable $DBHmax$ est le diamètre maximum (en pratique le percentile à 95 \%) atteint par l'espèce sur un site donné. Cette variable n'a pas de variabilité temporelle. Si le nombre d'individus sur le site est trop faible on attribut le $DBHmax$ sur l'ensemble du dispositif Guyafor.
+%\end{enumerate}
+
+Le réel $p_{i,t}$ correspond à la probabilité de mourir entre $t-1$ et $t.$
+% \end{itemize}
+ 
+\noindent Nous avons utiliser des techniques d'inférence bayesienne (maximisation de la vraisemblance du modèle) pour déterminer les paramètres $\theta$ de chaque variable.
+ 
+% Les paramètres $\theta$ des modèles de croissance et de mortalité sont à inférer en utilisant la vraisemblance du modèle joint :
+ %$$
+% \begin{array}{lcl}
+% \displaystyle \prod^{n}_{t = 1} f( DBH_{i_{j},t} | DBH_{i_{j},t-1} ) \times (1- p_{i_{j},t})\,\, \text{quand l'arbre}\,\, i\,\,\text{est vivant sur la période d'étude,}\\
+ %\displaystyle p_{i_{j},k} \times \prod^{k-1}_{t = 1} f( DBH_{i_{j},t} | DBH_{i_{j},t-1} ) \,\, \text{quand l'arbre meurt entre les temps}\,\, k-1\,\, \text{et}\,\, k,\\
+% \end{array}
+% $$
+ 
+% \noindent  où $f( DBH_{i_{j},t} | DBH_{i_{j},t-1} ) $ est la loi conditionnelle du diamètre de l'arbre $i_{j}$ au temps $t$ sachant son diamètre au temps $t-1.$
+% \end{itemize}
+
+\subsection{Inference and Selection Method}
+
+\subsection{Quantifying vulnerability}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+%
+%
+%                 SECTION : 3
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Results}\label{section_trois}
+
+\begin{center}
+    XXXXX PARTIE A TRADUIRE EN ANGLAIS XXXXXXX
+\end{center}
+
+\subsubsection{Résultats sur la vulnérabilité démographique des espèces étudiées}
+
+\noindent Les résultats obtenus pour toutes espèces confondues, montre qu'il existe une vulnérabilité générale au stress hydrique pour la croissance, qui est plus faible lorsque le stress hydrique augmente. Par contre le résultat moyen pour la mortalité est contre-intuitif. En effet lorsque le stress hydrique augmente la probabilité de mourir baisse significativement. Des études précédentes (voir Aubry-Kientz et al [XXX]) avaient trouvé des résultats similaires. Une explication est que la mortalité par chablis des arbres serait diminuée en cas de faibles précipitations.
+
+
+\noindent Ces résultats généraux varient peu lorsque l'on fait une analyse espèce par espèce. La figure \ref{fig_impact_mortalite} présente la valeur des paramètres spécifiques de vulnérabilité sur modèle de croissance et de mortalité. 
+
+\begin{itemize}
+ \item[Partie A,] Les espèces insensibles au stress hydrique, voire qui profite de périodes sèches :  pas d'exemple dans notre étude.
+ \item[Partie B,] Les espèces sensibles au stress hydrique pour la mortalité uniquement : pas d'exemple dans notre étude.
+ \item[Partie C,]  Les espèces sensibles au stress hydrique pour la croissance et la mortalité, comme {\it Carapa Guianensis} (Carapa).
+\item[ Partie D,] Les espèces sensibles au stress hydrique pour la croissance uniquement, comme  {\it Dicorynia guianensis} (Angélique) ou {\it Sterculia pruriens}
+\end{itemize}
+
+\noindent Des espèces sont significativement vulnérables (au seuil de $5\%$), uniquement pour la croissance.  En effet, les intervalles de confiance des paramètres, représentés par les traits, incluent souvent le $0$ (recouvrement avec les axes des impacts nuls), comme par exemple pour le Carapa {\it(Carapa Guianensis)} vis-à-vis de la mortalité.
+
+%\newpage 
+
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=0.7\textwidth]{vuln_paracou30ncl_cr5_mo5_clim_v3label.png}
+\caption{Vulnérabilité démographique des 16 espèces étudiées. Traits pointillés : axes d'impact nul ; Points : médiane du paramètre pour chaque espèce ; Traits : amplitude des paramètres entre les percentiles à 2.5 et 97.5 \% ; Partie A, B, C, et D, zones du graphe délimitées par les deux axes d'impact nul, voir explication dans le texte}
+\label{fig_impact_mortalite}
+\end{center}
+\end{figure}
+ 
+
+\subsection{XXXXX}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%           SECTION : 4
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{Discussion}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Bibliographie %%%
+%%%%%%%%%%%%%%%%%%%%%%
+%\section*{}
+
+\section{References}
+
+\begin{thebibliography}{99}
+%
+%
+\bibitem{Herault} %(HE2011)
+    \newblock H\'erault, B., Bachelot, B., Porter,L., Rossi, V., Bongers, F., Chave, J., Paine, C.E.T., (2011)  
+    \newblock Functional traits shape ontogenetic growth trajectories of rain forest tree species,
+    \newblock \emph{Journal of Ecology},\, 99, \,pp 1431-1440    
+%
+%
+\bibitem{Wagner} %(WA2011)
+    \newblock Wagner, F., H\'erault, B., Stahl, C., Bonal, D., Rossi, V., (2011)
+    \newblock Modeling water availability for trees in tropical forest
+    \newblock \emph{Agricultural and Forest Meteorology},\, 151,\, pp 1202-1213
+%
+%
+\bibitem{Wagner} %(WA2011)
+    \newblock Wagner, F., Rossi, V., Stahl, C., Bonal, D., H\'erault, B., (2012)
+    \newblock Water Availability Is the Main Climate Driver of Neotropical Tree Growth
+    \newblock \emph{Agricultural and Forest Meteorology},\, 151,\, pp 1202-1213
+%
+%
+\bibitem{Aubry-Kientz_1} %(WA2011)
+    \newblock Aubry-Kientz, M.,Rossi, V., Wagner, F., H\'erault, B., (2015)
+    \newblock Identifying climatic drivers of tropical forest dynamics
+    \newblock \emph{Biogeosciences Discuss.},\, 12,\, pp 1-31        
+%
+%
+\bibitem{Fargeon} %(WA2011)
+    \newblock Fargeon, H.,Aubry-Kientz, Brunaux, O., Desctoix, L., Gaspard, R., Guitet, S., Rossi, V., H\'erault, B., (2016)
+    \newblock Vulnerability of Commercial Tree Species to Water Stress in Logged Forests of the Guiana Shield
+    \newblock \emph{Forests},\, 7,\,5,\,\,105
+%
+%
+\bibitem{Aubry-Kientz_2} %(WA2011)
+    \newblock H.,Aubry-Kientz, Rossi, V., Boreux, J.-J., H\'erault, B., (2015)
+    \newblock A joint individual-based model coupling growth and mortality reveals tha tree vigor is a key component of tropical forest dynamics
+    \newblock \emph{Ecology and Evolution},\, 5,\,12,\,\,pp 2457-2465    
+    
+    
+    
+    \end{thebibliography}
+\end{document}
+
